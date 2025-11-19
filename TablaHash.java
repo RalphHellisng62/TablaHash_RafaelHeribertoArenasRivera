@@ -39,8 +39,10 @@ public class TablaHash {
         ArrayList<String> listaOrdenada = new ArrayList<>(tablaHash.values());
         Collections.sort(listaOrdenada);
         
-        
-        
-        
+        // Y por ultimo mostrara los resultados ordenados
+        System.out.println("\n Datos ordenados alfabéticamente:");
+        for (String nombre : listaOrdenada) {
+            System.out.println(nombre);
+        }
     }
 }
