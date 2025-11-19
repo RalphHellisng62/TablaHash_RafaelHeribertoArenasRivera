@@ -1,7 +1,10 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.Map;
 
 public class TablaHash {
     // Empezamos con la construcción de un main
@@ -25,6 +28,19 @@ public class TablaHash {
             System.out.println("Error al leer el archivo: " + e.getMessage());
             return;
         }
+
+         // Aqui mostrara el HashMap sin ordenar
+        System.out.println("Datos originales en la tabla Hash:");
+        for (Map.Entry<Integer, String> entry : tablaHash.entrySet()) {
+            System.out.println("ID " + entry.getKey() + ": " + entry.getValue());
+        }
+        
+        // Y ordenara los valores de la HashTable
+        ArrayList<String> listaOrdenada = new ArrayList<>(tablaHash.values());
+        Collections.sort(listaOrdenada);
+        
+        
+        
         
     }
 }
