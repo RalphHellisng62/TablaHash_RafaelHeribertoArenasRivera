@@ -1,5 +1,7 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -9,14 +11,16 @@ import java.util.Map;
 public class TablaHash {
     // Empezamos con la construcción de un main
     public static void main(String[] args) {
-        // nombre del arcihvo
-        String archivo = "nombresTablaHash.txt";
+        // nombre del arcihvo de entrada
+        String archivoEntrada = "nombresTablaHash.txt";
+        // nombre del archivo de salida
+        String archivoSalida = "nombresTablaHash_ordenados.txt";
         
         // Esto sera la tabla hash para almacenar los nombres
         HashMap<Integer, String> tablaHash = new HashMap<>();
 
         // Aqui lee el archivo y cargara los nombres al HashMap
-        try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(archivoEntrada))) {
             String linea;
             int id = 1;
             
@@ -43,6 +47,17 @@ public class TablaHash {
         System.out.println("\n Datos ordenados alfabéticamente:");
         for (String nombre : listaOrdenada) {
             System.out.println(nombre);
+        }
+
+         // Aqui guardara los nombres ordenados en un nuevo archivo
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(archivoSalida))) {
+            for (String nombre : listaOrdenada) {
+                bw.write(nombre);
+                bw.newLine(); // salto de línea
+            }
+            System.out.println("\n Archivo generado exitosamente: " + archivoSalida);
+        } catch (IOException e) {
+            System.out.println("Error al escribir el archivo ordenado: " + e.getMessage());
         }
     }
 }
